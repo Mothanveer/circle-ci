@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: docker:19.03.12 # Specify Docker image to use
+    steps:
+      - checkout # Checkout the code repository
+      - setup_remote_docker # Setup Docker environment
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t your_image_name:latest .
+      - run:
+          name: Push Docker image
+          command: |
+            echo "Pushing docker image"
